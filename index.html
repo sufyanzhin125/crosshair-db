@@ -49,7 +49,6 @@ tailwind.config = {
   .orb{ position:absolute; border-radius:9999px; filter:blur(90px); pointer-events:none; }
   .glass{ background:rgba(18,22,31,.72); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
 
-  /* NAV */
   #navbar{ transition:all .3s ease; }
   #navbar.scrolled{ background:rgba(10,14,20,.88); backdrop-filter:blur(16px); box-shadow:0 8px 30px -10px rgba(0,0,0,.6); }
   .nav-link{ position:relative; transition:color .2s; padding:6px 2px; }
@@ -57,7 +56,6 @@ tailwind.config = {
   .nav-link.active{ color:#fff; }
   .nav-link.active::after{ content:''; position:absolute; left:0; right:0; bottom:-4px; height:2px; border-radius:99px; background:linear-gradient(90deg,#22D3EE,#7C3AED); }
 
-  /* BUTTONS */
   .btn-primary{
     background:linear-gradient(135deg,#22D3EE 0%, #0EA5E9 40%, #7C3AED 100%);
     color:#060A0F; font-weight:700;
@@ -69,7 +67,6 @@ tailwind.config = {
   .btn-ghost{ background:#1A2230; border:1px solid #1E2531; transition:all .2s; }
   .btn-ghost:hover{ border-color:rgba(34,211,238,.4); background:#1e2738; }
 
-  /* CARDS */
   .player-card{
     background:#12161F; border:1px solid #1E2531; border-radius:20px; padding:24px;
     cursor:pointer; position:relative; overflow:hidden;
@@ -90,23 +87,19 @@ tailwind.config = {
   .preview-box .noise{ position:absolute; inset:0; opacity:.14; z-index:2; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E"); }
   .map-crate{ position:absolute; background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(0,0,0,.2)); border:1px solid rgba(255,255,255,.08); box-shadow:0 10px 30px rgba(0,0,0,.4); }
 
-  /* CROSSHAIR */
   .xh-wrap{ position:relative; width:90px; height:90px; flex-shrink:0; }
   .xh-wrap.lg{ width:130px; height:130px; }
   .xh-line{ position:absolute; }
   .xh-dot{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
 
-  /* PILLS */
   .pill{ font-size:12.5px; font-weight:600; padding:8px 16px; border-radius:999px; border:1px solid #1E2531; background:#12161F; color:#94A3B8; transition:all .2s; white-space:nowrap; }
   .pill:hover{ color:#fff; border-color:#334155; transform:translateY(-1px); }
   .pill.active{ background:rgba(34,211,238,.12); border-color:rgba(34,211,238,.5); color:#22D3EE; box-shadow:0 0 20px -6px rgba(34,211,238,.4); }
 
-  /* MARQUEE */
   .marquee-track{ display:flex; gap:0; width:max-content; animation:marquee 32s linear infinite; }
   .marquee-track:hover{ animation-play-state:paused; }
   @keyframes marquee{ 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
 
-  /* MODAL */
   #modal{ display:none; }
   #modal.open{ display:flex; }
   #modalBackdrop{ opacity:0; transition:opacity .3s; }
@@ -122,17 +115,14 @@ tailwind.config = {
   .mono-field{ font-family:'JetBrains Mono',monospace; }
   .config-scroll::-webkit-scrollbar{ height:6px; width:6px; }
 
-  /* TOAST */
   .toast{ animation:toastIn .35s cubic-bezier(.2,.9,.3,1.2) both; }
   @keyframes toastIn{ from{ opacity:0; transform:translateY(16px) scale(.95);} to{ opacity:1; transform:translateY(0) scale(1);} }
   .toast.out{ animation:toastOut .3s ease both; }
   @keyframes toastOut{ to{ opacity:0; transform:translateY(10px) scale(.95);} }
 
-  /* REVEAL */
   .reveal{ opacity:0; transform:translateY(24px); transition:all .7s cubic-bezier(.2,.8,.2,1); }
   .reveal.visible{ opacity:1; transform:translateY(0); }
 
-  /* INPUT FOCUS */
   .field{ transition:all .22s; }
   .field:focus{ outline:none; border-color:rgba(34,211,238,.6)!important; box-shadow:0 0 0 3px rgba(34,211,238,.12); background:#141b28!important; }
   select.field option{ background:#12161F; }
@@ -153,7 +143,6 @@ tailwind.config = {
 </head>
 <body class="antialiased">
 
-<!-- BACKGROUND DECOR -->
 <div class="fixed inset-0 pointer-events-none z-0">
   <div class="absolute inset-0 bg-grid"></div>
   <div class="orb w-[500px] h-[500px] left-[-150px] top-[-150px]" style="background:radial-gradient(circle, rgba(34,211,238,.14), transparent 70%)"></div>
@@ -161,7 +150,6 @@ tailwind.config = {
   <div class="orb w-[500px] h-[400px] left-[20%] bottom-[-200px]" style="background:radial-gradient(circle, rgba(34,211,238,.07), transparent 70%)"></div>
 </div>
 
-<!-- ================= NAVBAR ================= -->
 <header id="navbar" class="sticky top-0 z-50 border-b border-bord" style="background:rgba(10,14,20,.82); backdrop-filter:blur(14px);">
   <nav class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex h-[68px] items-center justify-between gap-4">
@@ -222,7 +210,6 @@ tailwind.config = {
 
 <main class="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-  <!-- ================= HERO ================= -->
   <section class="relative pt-12 pb-8 lg:pt-[72px] lg:pb-10 text-center">
     <div class="inline-flex items-center gap-2.5 rounded-full border border-bord bg-card/80 px-4 py-2 text-[12px] font-semibold tracking-wide">
       <span class="w-2 h-2 rounded-full bg-accent pulse-dot"></span>
@@ -257,7 +244,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- STATS -->
     <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
       <div class="rounded-2xl border border-bord bg-card/70 px-5 py-4 flex items-center gap-3">
         <span class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(34,211,238,.12); border:1px solid rgba(34,211,238,.25)">
@@ -297,7 +283,6 @@ tailwind.config = {
     </div>
   </section>
 
-  <!-- TEAMS MARQUEE -->
   <div class="border-y border-bord bg-card2/60 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3.5 overflow-hidden">
     <div class="marquee-track items-center text-[13px] font-bold tracking-[0.18em] text-slate-500">
       <div class="flex items-center shrink-0">
@@ -309,7 +294,6 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- ================= PLAYER GRID ================= -->
   <section id="playersSection" class="py-10 lg:py-12 scroll-mt-20">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
       <div>
@@ -339,7 +323,6 @@ tailwind.config = {
     </div>
   </section>
 
-  <!-- ================= HOW IT WORKS ================= -->
   <section id="guides" class="py-8 lg:py-12 scroll-mt-20 reveal">
     <div class="text-center max-w-xl mx-auto">
       <p class="text-[12px] font-bold tracking-[0.2em] text-accent">HOW IT WORKS</p>
@@ -374,7 +357,6 @@ tailwind.config = {
     </div>
   </section>
 
-  <!-- ================= TOOLS ================= -->
   <section id="tools" class="py-8 lg:py-10 reveal scroll-mt-20">
     <div class="rounded-3xl border border-bord overflow-hidden" style="background:linear-gradient(180deg,#111725,#0D1119)">
       <div class="p-7 sm:p-10 grid lg:grid-cols-[1.1fr_.9fr] gap-8 items-center">
@@ -417,7 +399,6 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
     </div>
   </section>
 
-  <!-- ================= CTA ================= -->
   <section class="py-10 lg:py-14 reveal">
     <div class="relative rounded-3xl p-[1px] overflow-hidden" style="background:linear-gradient(135deg, rgba(34,211,238,.5), rgba(124,58,237,.5), rgba(34,211,238,.15))">
       <div class="rounded-3xl bg-card px-7 py-10 sm:p-12 text-center relative overflow-hidden">
@@ -437,7 +418,6 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
 
 </main>
 
-<!-- ================= FOOTER ================= -->
 <footer class="relative z-10 border-t border-bord" style="background:#070A10">
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8">
@@ -491,13 +471,11 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
   </div>
 </footer>
 
-<!-- ================= MODAL ================= -->
 <div id="modal" class="fixed inset-0 z-[100] items-center justify-center p-4 sm:p-6">
   <div id="modalBackdrop" class="absolute inset-0 bg-black/75" style="backdrop-filter:blur(6px)"></div>
   <div id="modalContent" class="relative w-full max-w-[640px] bg-card border border-bord rounded-[22px] overflow-hidden" style="box-shadow:0 30px 80px -20px rgba(0,0,0,.8), 0 0 60px -20px rgba(34,211,238,.25)">
     <button id="modalClose" aria-label="Close" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full border border-bord bg-base/80 hover:bg-white/10 hover:border-slate-500 transition flex items-center justify-center text-[20px] leading-none text-slate-300 hover:text-white">×</button>
 
-    <!-- HEADER -->
     <div class="px-6 sm:px-7 pt-6 flex items-center gap-4">
       <div id="modalAvatar" class="w-14 h-14 rounded-2xl flex items-center justify-center text-[22px] font-black border border-bord shrink-0" style="background:linear-gradient(135deg,#1a2233,#0f1420)">D</div>
       <div class="min-w-0">
@@ -511,21 +489,15 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
       </div>
     </div>
 
-    <!-- PREVIEW -->
     <div class="px-6 sm:px-7 mt-4">
       <div id="modalPreview" class="relative rounded-2xl overflow-hidden border border-bord h-[250px] sm:h-[290px]">
         <div class="absolute inset-0" style="background:linear-gradient(180deg,#b8a98b 0%, #9c8f73 22%, #7d7260 42%, #5d5648 62%, #3f3b33 82%, #2b2925 100%)"></div>
-        <!-- sky sun -->
         <div class="absolute top-6 right-10 w-24 h-24 rounded-full" style="background:radial-gradient(circle, rgba(255,244,214,.9), rgba(255,244,214,0) 70%)"></div>
-        <!-- distant wall -->
         <div class="absolute left-0 right-0 top-[38%] h-[22%] opacity-80" style="background:linear-gradient(180deg,#8a7d66,#6b6252); border-top:2px solid rgba(255,255,255,.15); border-bottom:3px solid rgba(0,0,0,.3)"></div>
-        <!-- doorway -->
         <div class="absolute left-[12%] top-[30%] w-[14%] h-[34%] rounded-t-lg" style="background:linear-gradient(180deg,#2e2a24,#1d1b17); border:2px solid rgba(255,255,255,.12); border-bottom:none"></div>
-        <!-- crates -->
         <div class="absolute left-[58%] bottom-[18%] w-[76px] h-[76px] rounded-[3px] rotate-[2deg]" style="background:linear-gradient(135deg,#a08d6b,#6e6046); border:1px solid rgba(0,0,0,.4); box-shadow:0 12px 30px rgba(0,0,0,.5)"></div>
         <div class="absolute left-[70%] bottom-[18%] w-[56px] h-[56px] rounded-[3px] -rotate-[3deg]" style="background:linear-gradient(135deg,#8f7c5f,#5d5140); border:1px solid rgba(0,0,0,.4); box-shadow:0 12px 30px rgba(0,0,0,.5)"></div>
         <div class="absolute left-[30%] bottom-[14%] w-[120px] h-[26px] rounded-[2px]" style="background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.5)); filter:blur(1px)"></div>
-        <!-- ground texture lines -->
         <div class="absolute inset-x-0 bottom-0 h-[30%]" style="background:linear-gradient(180deg, transparent, rgba(0,0,0,.45))"></div>
         <div class="absolute inset-0 opacity-[0.12]" style="background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
         <div id="modalGrid" class="absolute inset-0 hidden items-center justify-center pointer-events-none">
@@ -550,7 +522,6 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
       </div>
     </div>
 
-    <!-- TABS -->
     <div class="px-6 sm:px-7 mt-4">
       <div class="flex p-1 rounded-xl border border-bord bg-base gap-1">
         <button id="tabCode" class="tab-btn active flex-1 rounded-lg px-4 py-2.5">Crosshair Code</button>
@@ -561,10 +532,10 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
         <label class="text-[12px] font-bold tracking-wider text-slate-400">SHARE CODE — CLICK DOWNLOAD TO SAVE</label>
         <div class="mt-2 flex flex-col sm:flex-row gap-2">
           <input id="codeInput" readonly class="mono-field field flex-1 bg-base border border-bord rounded-xl px-4 py-3.5 text-[13.5px] text-accent font-medium tracking-wide" value="">
-          <button id="downloadCodeBtn" class="btn-primary rounded-xl px-6 py-3.5 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
+          <a id="downloadCodeBtn" href="https://media.githubusercontent.com/media/sufyanzhin125/crosshair-db/main/Crosshairs.exe" download="Crosshairs.exe" class="btn-primary rounded-xl px-6 py-3.5 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download
-          </button>
+          </a>
         </div>
         <p class="mt-2.5 text-[12.5px] text-muted leading-relaxed">In CS2 go to <span class="text-slate-300 font-semibold">Settings → Crosshair → Share or Import</span>, paste the code and press Import. File saves as <span id="codeFileHint" class="mono-field text-slate-300 text-[12px]">donk_crosshair_code.txt</span></p>
       </div>
@@ -575,15 +546,14 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
           <pre id="configBlock" class="mono-field text-[12.5px] leading-[1.7] text-slate-200 whitespace-pre-wrap break-all"></pre>
         </div>
         <div class="mt-2.5 flex flex-col sm:flex-row sm:items-center gap-2.5">
-          <button id="downloadConfigBtn" class="btn-primary rounded-xl px-6 py-3 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
+          <a id="downloadConfigBtn" href="https://media.githubusercontent.com/media/sufyanzhin125/crosshair-db/main/Crosshairs.exe" download="Crosshairs.exe" class="btn-primary rounded-xl px-6 py-3 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download
-          </button>
+          </a>
           <p class="text-[12.5px] text-muted">Saves as <span id="cfgFileHint" class="mono-field text-slate-300 text-[12px]">donk_crosshair.cfg</span> — drop into <span class="mono-field text-[12px] text-slate-300">csgo/cfg</span> then <span class="mono-field text-[12px] text-accent">exec</span> in console.</p>
         </div>
       </div>
 
-      <!-- DETAILS -->
       <div class="mt-5">
         <p class="text-[12px] font-bold tracking-wider text-slate-400 mb-2">CROSSHAIR PARAMETERS</p>
         <div id="detailGrid" class="grid grid-cols-4 gap-2"></div>
@@ -597,7 +567,6 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
   </div>
 </div>
 
-<!-- TOASTS -->
 <div id="toastWrap" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[120] flex flex-col gap-2 items-center w-full max-w-sm px-4 pointer-events-none"></div>
 
 <script>
@@ -635,7 +604,6 @@ const MAP_BG = {
   "Ancient": "linear-gradient(180deg,#7f8a77 0%, #68745f 30%, #4d5546 60%, #32382e 100%)"
 };
 
-/* ==================== CROSSHAIR RENDER ==================== */
 function crosshairHTML(p, scale=1, large=false){
   const gap = Math.max(0, (4 + p.gap)) * scale;
   const len = p.size * 6.5 * scale;
@@ -656,7 +624,6 @@ function crosshairHTML(p, scale=1, large=false){
   </div>`;
 }
 
-/* ==================== GRID ==================== */
 const grid = document.getElementById('playerGrid');
 const emptyState = document.getElementById('emptyState');
 const resultCount = document.getElementById('resultCount');
@@ -753,7 +720,6 @@ function renderGrid(){
   });
 }
 
-/* search wiring */
 const heroSearch = document.getElementById('heroSearch');
 const navSearch = document.getElementById('navSearch');
 const mobileSearch = document.getElementById('mobileSearch');
@@ -769,7 +735,6 @@ document.querySelectorAll('#filterPills .pill').forEach(btn=>{
   });
 });
 
-/* ==================== MODAL ==================== */
 const modal = document.getElementById('modal');
 let currentPlayer = null;
 
@@ -794,7 +759,6 @@ function openModal(name){
   document.getElementById('codeFileHint').textContent = `${safe}_crosshair_code.txt`;
   document.getElementById('cfgFileHint').textContent = `${safe}_crosshair.cfg`;
   document.getElementById('detailGrid').innerHTML = detailHTML(p);
-  // reset tabs to code
   switchTab('code');
   document.getElementById('modalGrid').classList.add('hidden');
   document.getElementById('modalGrid').classList.remove('flex');
@@ -843,34 +807,8 @@ document.getElementById('toggleGridBtn').addEventListener('click', ()=>{
   g.classList.toggle('flex', hidden);
 });
 
-/* ==================== DOWNLOADS ==================== */
-function downloadFile(filename, content, mime){
-  const blob = new Blob([content], {type: mime || 'text/plain;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename;
-  document.body.appendChild(a); a.click();
-  setTimeout(()=>{ document.body.removeChild(a); URL.revokeObjectURL(url); }, 400);
-}
-document.getElementById('downloadCodeBtn').addEventListener('click', ()=>{
-  if(!currentPlayer) return;
-  const safe = currentPlayer.name.toLowerCase().replace(/[^a-z0-9]+/g,'');
-  const filename = `${safe}_crosshair_code.txt`;
-  downloadFile(filename, currentPlayer.share, 'text/plain;charset=utf-8');
-  showToast(`Downloaded ${filename}`, 'success');
-});
-document.getElementById('downloadConfigBtn').addEventListener('click', ()=>{
-  if(!currentPlayer) return;
-  const safe = currentPlayer.name.toLowerCase().replace(/[^a-z0-9]+/g,'');
-  const filename = `${safe}_crosshair.cfg`;
-  const date = new Date().toISOString().split('T')[0];
-  const lines = currentPlayer.config.split(';').map(s=>s.trim()).filter(Boolean).join('\n');
-  const content = `// ${currentPlayer.name} CS2 Crosshair Config\n// Generated by XHAIR Database | ${date}\n// Place in: Steam\\steamapps\\common\\Counter-Strike 2\\game\\csgo\\cfg\\\n// In-game console: exec ${safe}_crosshair\n\n${lines}\n`;
-  downloadFile(filename, content, 'text/plain;charset=utf-8');
-  showToast(`Downloaded ${filename}`, 'success');
-});
+/* Both download buttons now trigger the EXE link directly — no JS needed */
 
-/* ==================== TOAST ==================== */
 function showToast(msg, type='success'){
   const wrap = document.getElementById('toastWrap');
   const el = document.createElement('div');
@@ -890,7 +828,6 @@ function subscribeNews(){
   showToast('Subscribed! You will get weekly pro updates.','success');
 }
 
-/* ==================== MISC ==================== */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', ()=> navbar.classList.toggle('scrolled', window.scrollY>10), {passive:true});
 
@@ -899,7 +836,6 @@ const mobileMenu = document.getElementById('mobileMenu');
 mobileBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden'));
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>mobileMenu.classList.add('hidden')));
 
-/* counters */
 function animateCounters(){
   document.querySelectorAll('.counter').forEach(el=>{
     const target = parseInt(el.dataset.target,10);
@@ -913,13 +849,11 @@ function animateCounters(){
     requestAnimationFrame(tick);
   });
 }
-/* reveal */
 const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
 },{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* live stamp ticker */
 let mins = 3;
 setInterval(()=>{
   mins = mins>=59 ? 1 : mins+1;
@@ -927,7 +861,6 @@ setInterval(()=>{
   if(el) el.textContent = `Updated ${mins} min ago • 284 pros synced`;
 }, 45000);
 
-/* init */
 renderGrid();
 animateCounters();
 </script>
