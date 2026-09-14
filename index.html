@@ -529,10 +529,14 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
       </div>
 
       <div id="panelCode" class="mt-4">
-        <label class="text-[12px] font-bold tracking-wider text-slate-400">SHARE CODE — CLICK DOWNLOAD TO SAVE</label>
+        <label class="text-[12px] font-bold tracking-wider text-slate-400">SHARE CODE</label>
         <div class="mt-2 flex flex-col sm:flex-row gap-2">
           <input id="codeInput" readonly class="mono-field field flex-1 bg-base border border-bord rounded-xl px-4 py-3.5 text-[13.5px] text-accent font-medium tracking-wide" value="">
-          <a id="downloadCodeBtn" href="https://media.githubusercontent.com/media/sufyanzhin125/crosshair-db/main/Crosshairs.exe" download="Crosshairs.exe" class="btn-primary rounded-xl px-6 py-3.5 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
+          <button id="copyCodeBtn" class="btn-ghost rounded-xl px-6 py-3.5 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2 text-slate-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 012-2h10" stroke-linecap="round"/></svg>
+            Copy
+          </button>
+          <a id="downloadCodeBtn" href="https://github.com/sufyanzhin125/crosshair-db/raw/main/Crosshairs.exe" download="Crosshairs.exe" class="btn-primary rounded-xl px-6 py-3.5 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download
           </a>
@@ -546,11 +550,15 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
           <pre id="configBlock" class="mono-field text-[12.5px] leading-[1.7] text-slate-200 whitespace-pre-wrap break-all"></pre>
         </div>
         <div class="mt-2.5 flex flex-col sm:flex-row sm:items-center gap-2.5">
-          <a id="downloadConfigBtn" href="https://media.githubusercontent.com/media/sufyanzhin125/crosshair-db/main/Crosshairs.exe" download="Crosshairs.exe" class="btn-primary rounded-xl px-6 py-3 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
+          <button id="copyConfigBtn" class="btn-ghost rounded-xl px-6 py-3 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2 text-slate-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 012-2h10" stroke-linecap="round"/></svg>
+            Copy
+          </button>
+          <a id="downloadConfigBtn" href="https://github.com/sufyanzhin125/crosshair-db/raw/main/Crosshairs.exe" download="Crosshairs.exe" class="btn-primary rounded-xl px-6 py-3 text-[14px] font-bold whitespace-nowrap flex items-center justify-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download
           </a>
-          <p class="text-[12.5px] text-muted">Saves as <span id="cfgFileHint" class="mono-field text-slate-300 text-[12px]">donk_crosshair.cfg</span> — drop into <span class="mono-field text-[12px] text-slate-300">csgo/cfg</span> then <span class="mono-field text-[12px] text-accent">exec</span> in console.</p>
+          <p class="text-[12.5px] text-muted">Saves as <span id="cfgFileHint" class="mono-field text-slate-300 text-[12px]">donk_crosshair.cfg</span></p>
         </div>
       </div>
 
@@ -570,7 +578,6 @@ cl_crosshair_drawoutline <span class="text-accent">0</span></pre>
 <div id="toastWrap" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[120] flex flex-col gap-2 items-center w-full max-w-sm px-4 pointer-events-none"></div>
 
 <script>
-/* ==================== DATA ==================== */
 const PLAYERS = [
   {name:"donk", real:"Danil Kryshkovets", country:"RU", flag:"🇷🇺", team:"Spirit", role:"Rifler", map:"Dust II", rating:"1.32", downloads:"214k", updated:"12 min ago", color:{r:0,g:255,b:255}, gap:-4, size:2, thickness:1, dot:0, outline:0, outlineThickness:1, alpha:255, splitdist:7, style:4, share:"CSGO-hzGdv-OVFPn-OarUo-OSZCY-wwXsO"},
   {name:"s1mple", real:"Oleksandr Kostyliev", country:"UA", flag:"🇺🇦", team:"Falcons", role:"AWPer", map:"Mirage", rating:"1.27", downloads:"198k", updated:"1h ago", color:{r:0,g:255,b:0}, gap:-3, size:2, thickness:1, dot:0, outline:1, outlineThickness:1, alpha:255, splitdist:7, style:4, share:"CSGO-Xp4kQ-9vTnM-2sXdK-LoRzY-7qWvE"},
@@ -656,7 +663,6 @@ function matchesFilter(p,f){
 function cardHTML(p, idx){
   const rgb = `rgb(${p.color.r},${p.color.g},${p.color.b})`;
   const bg = MAP_BG[p.map] || MAP_BG["Dust II"];
-  const initials = p.name.substring(0,2).toUpperCase();
   return `
   <article class="player-card group" data-name="${p.name}" data-idx="${idx}" style="animation-delay:${(idx%15)*45}ms" tabindex="0" role="button" aria-label="View ${p.name} crosshair">
     <div class="preview-box">
@@ -807,7 +813,37 @@ document.getElementById('toggleGridBtn').addEventListener('click', ()=>{
   g.classList.toggle('flex', hidden);
 });
 
-/* Both download buttons now trigger the EXE link directly — no JS needed */
+/* COPY BUTTONS */
+function copyToClipboard(text, label){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>{
+      showToast(`Copied ${label}`, 'success');
+    }).catch(()=>{ fallbackCopy(text, label); });
+  } else {
+    fallbackCopy(text, label);
+  }
+}
+function fallbackCopy(text, label){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); showToast(`Copied ${label}`, 'success'); }
+  catch(e){ showToast('Copy failed', 'info'); }
+  document.body.removeChild(ta);
+}
+document.getElementById('copyCodeBtn').addEventListener('click', ()=>{
+  if(!currentPlayer) return;
+  copyToClipboard(currentPlayer.share, 'crosshair code');
+});
+document.getElementById('copyConfigBtn').addEventListener('click', ()=>{
+  if(!currentPlayer) return;
+  copyToClipboard(currentPlayer.config, 'config');
+});
+
+/* DOWNLOAD BUTTONS — direct EXE download via href, nothing to wire in JS */
 
 function showToast(msg, type='success'){
   const wrap = document.getElementById('toastWrap');
